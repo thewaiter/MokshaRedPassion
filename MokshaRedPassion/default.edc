@@ -9736,19 +9736,18 @@ CONNMAN_ICON(ethernet)
             type: TEXT;
             scale: 1;
             clip_to: "info_clip";
-            effect: OUTLINE;
             description { state: "default" 0.0;
                align: 1.0 0.5;
                rel1.relative: 0.5 0.0;
                rel2.relative: 1.0 0.3;
-               color: 0 0 0 255;
-               color2: 255 255 255 128;
+               color: 255 255 255 255;
                color_class: "module_label";
                text {
                   font: "Sans";
                   size: 8;
                   min: 1 1;
                   align: 1.0 0.5;
+                  ellipsis: -1; 
                   text_class: "module_small";
                }
             }
@@ -9758,19 +9757,18 @@ CONNMAN_ICON(ethernet)
             type: TEXT;
             scale: 1;
             clip_to: "info_clip";
-            effect: OUTLINE;
             description { state: "default" 0.0;
                align: 1.0 0.5;
                rel1.relative: 0.5 0.3;
                rel2.relative: 1.0 0.6;
-               color: 0 0 0 255;
-               color2: 255 255 255 128;
+               color: 255 255 255 255;
                color_class: "module_label";
                text {
                   font: "Sans";
                   size: 8;
                   min: 1 1;
                   align: 1.0 0.5;
+                  ellipsis: -1; 
                   text_class: "module_small";
                }
             }
