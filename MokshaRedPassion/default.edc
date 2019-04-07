@@ -32355,7 +32355,6 @@ target: "region";
          part {
             name: "e.text.label";
             type: TEXT;
-            effect: SHADOW;
             scale: 1;
             clip_to: "input_base";
             description {
@@ -32372,13 +32371,13 @@ target: "region";
                   offset: 10  -4;
 
                }
-               color: 60 60 60 255;
-               color3: 255 255 255 68;
+               color: 255 255 255 200;
                text {
                   font: "Sans:style=Bold";
                   size: 11;
                   align: 0.0 0.5;
                   min: 1 1;
+                  ellipsis: -1; 
                   text_class: "fileman_typebuf";
                }
             }
@@ -32407,12 +32406,12 @@ target: "region";
                normal: "icon_right_arrow.png";
                }
 
-               color: 20 20 20 250;
+               color: 255 255 255 200;
             }
             description {
                state: "faded" 0.0;
                inherit: "default" 0.0;
-               color: 20 20 20 100;
+               color: 255 255 255 100;
             }
          }
          part {
@@ -33554,7 +33553,7 @@ target: "region";
                rel2 {
                   to: "base";
                   relative: 1.0 1.0;
-                  offset: -3  -11;
+                  offset: -4  -20;
                }
             }
          }
@@ -33617,14 +33616,14 @@ target: "region";
             description {
                state: "default" 0.0;
                rel1 {
-                  offset: 2 -12;
+                  offset: 2 -13;
                   relative: 0.0 1.0;
                }
-               rel2.offset: -2 -4;
-               color3: 20 20 20 60;
+               rel2.offset: -2 -13;
+               color3: 20 20 20 50;
                color: 255 255 255 255;
                text {
-                  font: "Sans";
+                  font: "Sans:style=Bold";
                   size: 10;
                   min: 0 1;
                   align: 0.5 0.0;
@@ -33635,12 +33634,12 @@ target: "region";
                state: "selected" 0.0;
 	       inherit: "default" 0.0;
                rel1 {
-                  offset: 2 -12;
+                  offset: 2 -13;
                   relative: 0.0 1.0;
                }
-               rel2.offset: -2 -4;
-               color: 250 250 250 255;
-               color3: 20 20 20 40;
+               rel2.offset: -2 -13;
+               color: 231 231 231 255;
+               color3: 20 20 20 255;
             }
          }
          
