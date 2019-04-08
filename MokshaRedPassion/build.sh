@@ -1,2 +1,2 @@
 #!/bin/sh
-edje_cc $@ -id . -fd . default.edc -o ../MokshaRedPassion.edj
+edje_cc $@ -id . -fd . default.edc -o ../MokshaPassion.edj
