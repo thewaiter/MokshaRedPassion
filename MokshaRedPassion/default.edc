@@ -115,7 +115,7 @@ color_classes {
    }
    color_class {
       name: "menu_item_disabled";
-      color: 110 110 110 255;
+      color: 210 210 210 255;
       color3: 0 0 0 0;
    }
    color_class {
