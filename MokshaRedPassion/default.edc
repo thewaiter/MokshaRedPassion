@@ -27829,7 +27829,6 @@ target: "region";
          }
          part {
             name: "v1";
-            type: RECT;
             mouse_events: 1;
             clip_to: "vclip";
             description {
@@ -27840,7 +27839,6 @@ target: "region";
          }
          part {
             name: "v2";
-            type: RECT;
             mouse_events: 1;
             clip_to: "vclip";
             description {
@@ -27851,7 +27849,6 @@ target: "region";
          }
          part {
             name: "h1";
-            type: RECT;
             mouse_events: 1;
             clip_to: "hclip";
             description {
@@ -27862,7 +27859,6 @@ target: "region";
          }
          part {
             name: "h2";
-            type: RECT;
             mouse_events: 1;
             clip_to: "hclip";
             description {
