@@ -10714,11 +10714,11 @@ parts {
 		part { name: "time";
 			type: TEXT;
 			effect: SHADOW;
-			scale: 1;
+			scale: 0;
 			description { state: "default" 0.0;
 				//				TEXT_COLOR;
-				color3: 20 20 20 255 ;
-				color: 200 5 5 128;
+				color3: 200 200 200 255;
+				color: 127 127 127 255; 
 				rel1.to: "time-area";
 				rel2.to: "time-area";
 				text {
@@ -10754,8 +10754,8 @@ parts {
 			scale: 1;
 			description { state: "default" 0.0;
 				//TEXT_COLOR
-				color3: 20 20 20 255 ;
-				color: 200 5 5 128;
+				color3: 200 200 200 255;
+				color: 127 127 127 255; 
 				align: 0.5 1.0;
 				min: 5 8;
 				max: 9999 30;
