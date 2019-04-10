@@ -33746,7 +33746,7 @@ target: "region";
                rel1.offset: 2 3;
                rel2.offset: -6 -7;
                /* visible: 0; */
-               color: 24 24 24 255;
+               color: 255 255 255 200;
                text {
                   font: "Sans:style=Bold";
                   size: 9;
@@ -33777,7 +33777,7 @@ target: "region";
                   /* to_x: "e.swallow.icons"; */
                }
                rel2.offset: -10 -1;
-               color: 20 20 20 255;
+               color: 255 255 255 200; 
                color3: 0 0 0 0;
                text {
                   font: "Sans";
@@ -33887,7 +33887,7 @@ target: "region";
                fixed: 0 1;
                rel1.to: "e.text.label";
                rel2.to: "e.text.label";
-               color: 0 0 0 255;
+               color: 255 255 255 200; 
                text {
                   font: "Sans:style";
                   text_source: "e.text.label";
@@ -33940,8 +33940,8 @@ target: "region";
                visible: 0;
                color: 245 245 245 255;
                text {
-                  font: "Sans:style=Bold";
-                  size: 9;
+                  font: "Sans";
+                  size: 10;
                   min: 0 1;
                   align: 0.5 0.5;
                   text_class: "fileman_icon";
