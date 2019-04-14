@@ -9619,8 +9619,8 @@ CONNMAN_ICON(ethernet)
                      b = 0;
                } 
                else {
-                  r = 0;
-                  g = 255;
+                  r = 200;
+                  g = 0;
                   b = 0;
                }
                custom_state(PART:"fill", "default", 0.0);
