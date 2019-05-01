@@ -7488,6 +7488,7 @@ group {
       parts {
          part {
             name: "clip";
+             mouse_events: 0;
             type: RECT;
             description {
                state: "default" 0.0;
@@ -7929,6 +7930,7 @@ group {
       parts {
          part {
             name: "clip";
+             mouse_events: 0;
             type: RECT;
             description {
                state: "default" 0.0;
@@ -23246,6 +23248,12 @@ target: "region";
                inherit: "default" 0.0;
                color_class: "button_text_disabled";
             }
+            description { state: "combo" 0.0;
+               inherit: "default" 0.0;
+               rel1.relative: 1.0 0.0;
+               rel1.offset: 2 5;
+               rel1.to_x: "e.swallow.icon";
+         }
             description {
                state: "icon" 0.0;
                inherit: "default" 0.0;
