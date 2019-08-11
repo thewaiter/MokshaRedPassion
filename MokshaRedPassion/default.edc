@@ -7266,11 +7266,11 @@ group {
                state: "default" 0.0;
                rel1 {
                   relative: 0.0 0.0;
-                  offset: 0 0;
+                  offset: 0 2;
                }
                rel2 {
                   relative: 1.0 1.0;
-                  offset: -1 -1;
+                  offset: -1 -2;
                }
             }
          }
@@ -7659,11 +7659,11 @@ group {
                state: "default" 0.0;
                rel1 {
                   relative: 0.0 0.0;
-                  offset: 0 0;
+                  offset: 0 2;
                }
                rel2 {
                   relative: 1.0 1.0;
-                  offset: -1 -1;
+                  offset: -1 -2;
                }
             }
          }
@@ -7785,16 +7785,17 @@ group {
 	 }
 	 part { name: "e.swallow.content";
 	    type: SWALLOW;
-	    description { state: "default" 0.0;
-	       rel1 {
-		  relative: 0.0 0.0;
-		  offset: 0 0;
-	       }
-	       rel2 {
-		  relative: 1.0 1.0;
-		  offset: -1 -1;
-	       }
-	    }
+	    description {
+               state: "default" 0.0;
+               rel1 {
+                  relative: 0.0 0.0;
+                  offset: 0 2;
+               }
+               rel2 {
+                  relative: 1.0 1.0;
+                  offset: -1 -2;
+               }
+            }
 	 }
 	 part { name: "over";
 	    mouse_events: 0;
