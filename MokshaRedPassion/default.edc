@@ -280,6 +280,7 @@ color_classes {
  */
 
 data.item: "gtk-theme" "MokshaPassion-GTK";
+data.item: "icon-theme" "Icons-Moksha-RedPassion"; 
 collections {
 /* begin the collection of edje groups that are in this file */
 
