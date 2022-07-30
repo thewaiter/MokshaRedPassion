@@ -39551,6 +39551,7 @@ target: "region";
          part { name: "e.text.label"; type: TEXT;
             effect: SOFT_SHADOW;
             mouse_events: 0;
+            scale: 1;
             description { state: "default" 0.0;
                rel1 {
                   relative: 0.0 0.5;
@@ -39566,7 +39567,7 @@ target: "region";
                   min: 0 1;
                   text_class: "module_small";
                }
-	    }
+            }
          }
          part { name: "event"; type: RECT;
             mouse_events: 1;
