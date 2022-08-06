@@ -39563,7 +39563,7 @@ target: "region";
                color3: 0 0 0 24;
                text {
                   font: "Sans";
-                  size: 9;
+                  size: 10;
                   min: 0 1;
                   text_class: "module_small";
                }
