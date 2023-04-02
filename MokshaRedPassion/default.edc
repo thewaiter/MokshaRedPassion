@@ -280,7 +280,7 @@ color_classes {
  */
 
 data.item: "gtk-theme" "MokshaPassion-GTK";
-data.item: "icon-theme" "Icons-Moksha-RedPassion"; 
+//~ data.item: "icon-theme" "Icons-Moksha-RedPassion"; 
 collections {
 /* begin the collection of edje groups that are in this file */
 
@@ -7285,6 +7285,20 @@ group {
     * up containing all sorts of things and the artist needs to be aware of
     * that and make sure the shelf border and background etc. won't interfere
     * with all manner of things that may get placed there */
+    
+   #define OFFSET() \
+	script { \
+		public message(Msg_Type:type, id, ...) { \
+			new val = getarg(2); \
+			if ((type == MSG_INT_SET) && (id == 0)) \
+				custom_state(PART:"e.swallow.content", "default", 0.0); \
+			if ((type == MSG_INT_SET) && (id == 1)) \
+				custom_state(PART:"e.swallow.content", "vert", 0.0); \
+			set_state_val(PART:"e.swallow.content", STATE_REL1_OFFSET, val, val); \
+			set_state_val(PART:"e.swallow.content", STATE_REL2_OFFSET, 0 - val, 0 - val); \
+			set_state(PART:"e.swallow.content", "custom", 0.0); \
+		} \
+	}
 
    group {
       name: "e/shelf/default/base";
@@ -7303,6 +7317,7 @@ group {
       images {
          image: "base_bg.png" COMP;
       }
+      OFFSET()
       parts {
          part {
             name: "base";
@@ -7320,14 +7335,14 @@ group {
             type: SWALLOW;
             description {
                state: "default" 0.0;
-               rel1 {
-                  relative: 0.0 0.0;
-                  offset: 0 0;
+                rel1.relative: 0.0 0.0;
+                rel1.offset: 0 0;
+                rel2.relative: 1.0 1.0;
+                rel2.offset: 0 0;
                }
-               rel2 {
-                  relative: 1.0 1.0;
-                  offset: 0 0;
-               }
+            description {
+               state: "vert" 0.0;
+               inherit: "default";
             }
          }
       }
@@ -7689,6 +7704,7 @@ group {
          //     image: "shelf_alt_over_right.png" COMP;
          image: "shelf_alt_shine.png" COMP;
       }
+      OFFSET()
       parts {
          part {
             name: "base";
@@ -7721,6 +7737,10 @@ group {
                   relative: 1.0 1.0;
                   offset: -1 -2;
                }
+            }
+            description {
+               state: "vert" 0.0;
+               inherit: "default";
             }
          }
          part {
@@ -7822,6 +7842,7 @@ group {
 // 	 image: "shelf_alt_over_left.png" COMP;
 // 	 image: "shelf_alt_over_right.png" COMP;
       }
+      OFFSET()
       parts {
 	 part { name: "base";
 	    mouse_events: 0;
@@ -7851,6 +7872,10 @@ group {
                   relative: 1.0 1.0;
                   offset: -1 -2;
                }
+            }
+	    description {
+               state: "vert" 0.0;
+               inherit: "default";
             }
 	 }
 	 part { name: "over";
@@ -13656,7 +13681,7 @@ group { name: "e/modules/ibar/menu/item";
             rel2.to: "e.size";
             box {
                layout: "horizontal";
-               padding: 2 0;
+               padding: 1 0;
                align: 0.5 0.5;
                min: 1 1;
             }
