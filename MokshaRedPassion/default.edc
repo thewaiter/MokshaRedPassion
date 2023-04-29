@@ -296,17 +296,16 @@ group {
    max: 1680 1050;
    parts {
       part {
-	 name: "background_image";
-	 description {
-	    state: "default" 0.0;
-	    image {
-	       normal: "grill_dark_tiny_pattern.png";
-	    }
-	 }
+      name: "background_image";
+        description {
+          state: "default" 0.0;
+          image {
+            normal: "grill_dark_tiny_pattern.png";
+          }
+        }
       }
    }
-
-}    
+}
 
 /////////////////////////////////////////////////////////////////////////////
 /*** DEFAULT WINDOW BORDER ***/
@@ -24093,13 +24092,13 @@ target: "region";
                state: "default" 0.0;
                rel1 {
                   relative: 1.0  0.0;
-                  offset: 2    3;
+                  offset: 5   3;
                   to_x: "e.swallow.icon";
                   to_y: "button_image";
                }
                rel2 {
                   relative: 1.0  1.0;
-                  offset: -4   -4;
+                  offset: -10   -4;
                   to: "button_image";
                }
                color_class: "button_text";
