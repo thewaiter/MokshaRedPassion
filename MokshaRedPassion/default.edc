@@ -13734,6 +13734,12 @@ group { name: "e/modules/ibar/menu/item";
             }
          }
       }
+       part { name: "fake_sys";
+         description { state: "default" 0.0;
+             rel.to: "e.size";
+             image.normal: "base_bg.png";
+         }
+      }
    }
    
 programs {
