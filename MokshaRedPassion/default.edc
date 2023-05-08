@@ -13734,12 +13734,6 @@ group { name: "e/modules/ibar/menu/item";
             }
          }
       }
-       part { name: "fake_sys";
-         description { state: "default" 0.0;
-             rel.to: "e.size";
-             image.normal: "base_bg.png";
-         }
-      }
    }
    
 programs {
@@ -29969,6 +29963,8 @@ target: "region";
    ICON("view-refresh","icon_efm_refresh.png",16)                  // EFMBUTTON("refresh"
    ICON("view-inherit","icon_dummy.png",64)                 // *** // EFMBUTTON("inherit"
    ICON("screenshot","icon_screenshot.png",64)                     // dunno
+   ICON("help-faq","help_faq.png",64)                              // "enlightenment/help_faq"
+   ICON("preferences-modes","icon_modes.png",64)                   // "enlightenment/presentation"
    //Standard Status Icons
    ICON("dialog-warning","icon_warning.png",128)                   // "enlightenment/warning"
    ICON("dialog-error","icon_warning.png",128)                     // "enlightenment/error"
