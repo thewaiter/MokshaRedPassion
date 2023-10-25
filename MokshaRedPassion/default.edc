@@ -11366,10 +11366,6 @@ group { name: "e/modules/clock/calendar/dayname";
 					color: 200 5 5 128; ;
 				}
 			}
-      program { name: "date_clicked";
-            signal: "mouse,clicked,1*"; source: "day";
-            action: SIGNAL_EMIT "e,action,date,get" "";
-      } 
 			part { name: "e.text.label";
 				type: TEXT;
 				effect: SHADOW;
@@ -27595,6 +27591,7 @@ target: "region";
                   size: 16;
                   align: 0.0 0.5;
                   min: 1 1;
+                  ellipsis: -1;
                   text_class: "desklock_passwd";
                }
             }
