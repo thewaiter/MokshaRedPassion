@@ -23294,6 +23294,21 @@ target: "region";
                rel2.offset: -1 -1;
             }
          }
+         part { name: "focus";
+             description { state: "default" 0.0;
+                rel1.offset: -5 0;
+                rel2.offset:  4 0;
+                color: 255 255 255 128;
+                image.normal: "shelf_alt_over.png";
+                image.border: 9 9 9 9;
+                visible: 0;
+                offscale;
+           }
+           description { state: "focused" 0.0;
+                inherit: "default" 0.0;
+                visible: 1;
+            }
+         }
          part {
             name: "e.text.label";
             type: TEXT;
@@ -23383,6 +23398,18 @@ target: "region";
             target: "mark";
             target: "event";
             target: "e.text.label";
+         }
+         program {
+            name: "focus_in";
+            signal: "e,state,focused"; source: "e";
+            action: STATE_SET "focused" 0.0;
+            target: "focus";
+         }
+         program {
+            name: "focus_out";
+            signal: "e,state,unfocused"; source: "e";
+            action: STATE_SET "default" 0.0;
+            target: "focus";
          }
       }
    }
@@ -23691,6 +23718,21 @@ target: "region";
                rel2.offset: -1 -1;
             }
          }
+         part { name: "focus";
+            description { state: "default" 0.0;
+               rel1.offset:  -5 0;
+               rel2.offset:   4 0;
+               color: 255 255 255 128;
+               image.normal: "shelf_alt_over.png";
+               image.border: 9 9 9 9;
+               visible: 0;
+               offscale;
+           }
+           description { state: "focused" 0.0;
+               inherit: "default" 0.0;
+               visible: 1;
+           }
+         } 
          part {
             name: "e.text.label";
             type: TEXT;
@@ -23780,6 +23822,18 @@ target: "region";
             target: "mark";
             target: "event";
             target: "e.text.label";
+         }
+         program {
+            name: "focus_in";
+            signal: "e,state,focused"; source: "e";
+            action: STATE_SET "focused" 0.0;
+            target: "focus";
+         }
+         program {
+            name: "focus_out";
+            signal: "e,state,unfocused"; source: "e";
+            action: STATE_SET "default" 0.0;
+            target: "focus";
          }
       }
    }
@@ -26670,6 +26724,21 @@ target: "region";
                visible: 1;
             }
          }
+         part { name: "focus";
+             description { state: "default" 0.0;
+                rel1.offset: -10 0;
+                rel2.offset:   5 0;
+                color: 255 255 255 128;
+                image.normal: "shelf_alt_over.png";
+                image.border: 9 9 9 9;
+                visible: 0;
+                offscale;
+           }
+           description { state: "focused" 0.0;
+                inherit: "default" 0.0;
+                visible: 1;
+            }
+         } 
          part {
             name: "label";
             type: RECT; 
@@ -26906,6 +26975,18 @@ target: "region";
             target: "clip";
             target: "event";
          }
+         program {
+            name: "focus_in";
+            signal: "e,state,focused"; source: "e";
+            action: STATE_SET "focused" 0.0;
+            target: "focus";
+         }
+         program {
+            name: "focus_out";
+            signal: "e,state,unfocused"; source: "e";
+            action: STATE_SET "default" 0.0;
+            target: "focus";
+         } 
       }
    }
    group {
@@ -26973,6 +27054,21 @@ target: "region";
                visible: 1;
             }
          }
+         part { name: "focus";
+             description { state: "default" 0.0;
+                rel1.offset: -4 -3;
+                rel2.offset:  4  3;
+                color: 255 255 255 128;
+                image.normal: "shelf_alt_over.png";
+                image.border: 9 9 9 9;
+                visible: 0;
+                offscale;
+           }
+           description { state: "focused" 0.0;
+                inherit: "default" 0.0;
+                visible: 1;
+            }
+         } 
          part {
             name: "label";
             type: SPACER;
@@ -27210,6 +27306,18 @@ target: "region";
             target: "clip";
             target: "event";
          }
+         program {
+            name: "focus_in";
+            signal: "e,state,focused"; source: "e";
+            action: STATE_SET "focused" 0.0;
+            target: "focus";
+         }
+         program {
+            name: "focus_out";
+            signal: "e,state,unfocused"; source: "e";
+            action: STATE_SET "default" 0.0;
+            target: "focus";
+         } 
       }
    }
    /* e/widgets/frame is used in the Config Dialog
