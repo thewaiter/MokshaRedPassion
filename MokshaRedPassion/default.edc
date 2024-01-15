@@ -39376,19 +39376,19 @@ target: "region";
                align: 0.0 0.5;
                rel1 {
                   relative: 0.0 0.0;
-                  offset: 3  3;
+                  offset: 5  5;
                   to: "button_image";
                }
                rel2 {
                   relative: 0.0 1.0;
-                  offset: 3   -4;
+                  offset: 5  -5;
                   to: "button_image";
                }
             }
             description { state: "iconified" 0.0;
                inherit: "default" 0.0;
-               rel1.relative: 0.0 0.25;
-               rel2.relative: 0.0 0.75;
+               rel1.relative: 0.0 0.15;
+               rel2.relative: 0.0 0.85;
             }
          }
          part { name: "icon_area2"; type: RECT;
@@ -39553,7 +39553,7 @@ target: "region";
                   normal: "bt_glow.png";
                   border: 7 7 9 9;
                }
-               fill.smooth : 0;
+               fill.smooth: 0;
             }
             description { state: "clicked" 0.0;
                inherit: "default" 0.0;
