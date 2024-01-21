@@ -28569,6 +28569,7 @@ target: "region";
                state: "default" 0.0;
                rel2.relative: 0.0 1.0;
                rel2.offset: 9 -1;
+               color: 0 0 0 0;
             }
          }
          part {
