@@ -20321,11 +20321,11 @@ target: "region";
                rel1 {
                   to_x: "icon0";
                   relative: 1.0  0.0;
-                  offset: 8 4;
+                  offset: 4 4;
                }
                rel2 {
                   relative: 1.0  1.0;
-                  offset: -5 5;
+                  offset: -5 -5;
                }
                color_class: "ilist_item";
                text {
@@ -20910,7 +20910,7 @@ target: "region";
                text {
                   font: "Sans";
                   size: 10;
-                  min: 1 1;
+                  min: 0 1;
                   align: 0.0 0.5;
                   text_class: "ilist_item";
                }
@@ -21480,11 +21480,11 @@ target: "region";
                rel1 {
                   to_x: "icon0";
                   relative: 1.0  0.0;
-                  offset: 8 4;
+                  offset: 4 4;
                }
                rel2 {
                   relative: 1.0  1.0;
-                  offset: -5 5;
+                  offset: -5 -5;
                }
                color_class: "ilist_item";
                text {
@@ -22061,11 +22061,11 @@ target: "region";
                rel1 {
                   to_x: "icon0";
                   relative: 1.0  0.0;
-                  offset: 8 4;
+                  offset: 4 4;
                }
                rel2 {
                   relative: 1.0  1.0;
-                  offset: -5 5;
+                  offset: -5 -5;
                }
                color_class: "ilist_item_odd";
                text {
