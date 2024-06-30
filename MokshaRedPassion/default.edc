@@ -7288,18 +7288,18 @@ group {
     * with all manner of things that may get placed there */
     
    #define SIZE_SCRIPT \
-	script { \
-		public message(Msg_Type:type, id, ...) { \
-			new val = getarg(2); \
-			if ((type == MSG_INT_SET) && (id == 0)) \
-				custom_state(PART:"spacer", "default", 0.0); \
-			if ((type == MSG_INT_SET) && (id == 1)) \
-				custom_state(PART:"spacer", "vert", 0.0); \
-			set_state_val(PART:"spacer", STATE_REL1_OFFSET, val, val); \
-			set_state_val(PART:"spacer", STATE_REL2_OFFSET, 0 - val, 0 - val); \
-			set_state(PART:"spacer", "custom", 0.0); \
-		} \
-	}
+    script { \
+        public message(Msg_Type:type, id, ...) { \
+            new val = getarg(2); \
+            if ((type == MSG_INT_SET) && (id == 0)) \
+                custom_state(PART:"spacer", "default", 0.0); \
+            if ((type == MSG_INT_SET) && (id == 1)) \
+                custom_state(PART:"spacer", "vert", 0.0); \
+            set_state_val(PART:"spacer", STATE_REL1_OFFSET, val, val); \
+            set_state_val(PART:"spacer", STATE_REL2_OFFSET, 0 - val, 0 - val); \
+            set_state(PART:"spacer", "custom", 0.0); \
+        } \
+    }
 
    group {
       name: "e/shelf/default/base";
@@ -7878,22 +7878,22 @@ group {
     * be provided by using more group names. eg, "e/shelf/black/base" */
    group { name: "e/shelf/alternate_vertical/base";
       images {
-	 image: "shelf_alt_vert_bg.png" COMP;
-// 	 image: "shelf_alt_bg_left.png" COMP;
-// 	 image: "shelf_alt_bg_right.png" COMP;
-	 image: "shelf_alt_over.png" COMP;
-// 	 image: "shelf_alt_over_left.png" COMP;
-// 	 image: "shelf_alt_over_right.png" COMP;
+        image: "shelf_alt_vert_bg.png" COMP;
+//      image: "shelf_alt_bg_left.png" COMP;
+//      image: "shelf_alt_bg_right.png" COMP;
+        image: "shelf_alt_over.png" COMP;
+//      image: "shelf_alt_over_left.png" COMP;
+//      image: "shelf_alt_over_right.png" COMP;
       }
-      SIZE_SCRIPT
+    SIZE_SCRIPT
       parts {
-	 part { name: "base";
-	    mouse_events: 0;
-	    description { state: "default" 0.0;
+       part { name: "base";
+        mouse_events: 0;
+        description { state: "default" 0.0;
                color_class: "shelf_base";
-	       image.normal: "shelf_alt_vert_bg.png";
-	       fill.smooth: 0;
-	    }
+           image.normal: "shelf_alt_vert_bg.png";
+           fill.smooth: 0;
+        }
 // 	    description { state: "left" 0.0;
 // 	       image.normal: "shelf_alt_bg_left.png";
 // 	       fill.smooth: 0;
@@ -7902,7 +7902,7 @@ group {
 // 	       image.normal: "shelf_alt_bg_right.png";
 // 	       fill.smooth: 0;
 // 	    }
-	 }
+     }
      part {
             name: "spacer";
             type: SPACER;
@@ -7934,15 +7934,15 @@ group {
             description { state: "vert" 0.0;
                inherit: "default";
             }
-	 }
-	 part { name: "over";
-	    mouse_events: 0;
-	    description { state: "default" 0.0;
-	       image.normal: "shelf_alt_over.png";
-	       image.border: 5 5 5 5;
-	       image.middle: 0;
-	       fill.smooth: 0;
-	    }
+     }
+     part { name: "over";
+        mouse_events: 0;
+        description { state: "default" 0.0;
+           image.normal: "shelf_alt_over.png";
+           image.border: 5 5 5 5;
+           image.middle: 0;
+           fill.smooth: 0;
+        }
 // 	    description { state: "left" 0.0;
 // 	       image.normal: "shelf_alt_over_left.png";
 // 	       image.border: 5 5 5 5;
@@ -7955,13 +7955,13 @@ group {
 // 	       image.middle: 0;
 // 	       fill.smooth: 0;
 // 	    }
-	 }
+     }
       }
       /* Because programs can not respond to 2 different types of signals,
        * the programs are split into individual programs that point towards
        * the base program for its orientation. */
       programs {
-	 /* Left orientation */
+     /* Left orientation */
 // 	 program { name: "left";
 // 	    signal: "e,state,orientation,left";
 // 	    source: "e";
@@ -10102,247 +10102,227 @@ group {
    script {
     public message(Msg_Type:type, id, ...) {
        if ((type == MSG_FLOAT) && (id == 1)) {
-	  new Float:val;
-	  new buf[11];
-	  new convert;
-	  buf[0] = 0;
-	  val = getfarg(2);
-	  convert = round(val*39);
-	  if (convert >= 20) convert = convert - 20;
-	  else {convert = convert + 40;}
+         new Float:val;
+         new buf[11];
+         new convert;
+         buf[0] = 0;
+         val = getfarg(2);
+         convert = round(val*39);
+         if (convert >= 20) convert = convert - 20;
+         else {convert = convert + 40;}
 
-	 if (convert < 10) {snprintf(buf, 10, "0%i", convert);}
-	 else            {snprintf(buf, 10,  "%i", convert);}	  
-	  set_state(PART:"dial", buf, 0.0);
+         if (convert < 10) {snprintf(buf, 10, "0%i", convert);}
+         else {snprintf(buf, 10,  "%i", convert);} 
+         set_state(PART:"dial", buf, 0.0);
        }
     }
    }
    
    parts {
-      part {
-	 name: "base";
-	 clip_to: "fade_clip";
-	 description {
-	    state: "default" 0.0;
-	    align: 0.5 0.5;
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-		rel1 {
-	       relative: 0.0 0.0;
-	    }
-	    rel2 {
-	       relative: 1.0 1.0;
-	    }
-	    image {
-	       normal: "widget_bg.png";
-	    }
-	 }
-      }
-	 part {
-	 name: "base_overlay";
-	 clip_to: "fade_clip";
-	 description {
-	    state: "default" 0.0;
-	    align: 0.5 0.5;
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-	    rel1 {
-	       relative: 0.0 0.0;
-	    }
-	    rel2 {
-	       relative: 1.0 1.0;
-	    }
-	    image {
-	       normal: "temp_gauge.png";
-	    }
-	 }
-      }
-      part {
-	 name: "overlay";
-	 clip_to: "fade_clip";
-	 description {
-	    state: "default" 0.0;
-   	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-		rel1 {
-	       to: "base";
-	    }
-	    rel2 {
-	       to: "base";
-	    }
-	    image {
-	       normal: "widget_fg.png";
-	    }
-	 }
-      }
-      part {
-	 name:           "e.text.reading";
-	 type:           TEXT;
-	 clip_to:        "fade_clip";
-	 description {
-	    state: "default" 0.0;
-	    align: 0.5 0.5;
-   	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-		rel1 {
-	       relative: 0.5  0.77;
-		   offset:  0 0;
-	    }
-	    rel2 {
-	       relative: 0.5  0.77;
-		   offset:  0 0;
-	    }
-		color: 221 221 221 255;
-	    color_class: "module_label";
-	    text {
-	       text:     "99^C";
-	       font:     "Edje-Vera-Bold";
-	       size:     10;
-	       min:      1 1;
-	       align:    0.0 0.0;
-               text_class: "module_small";	       
-	    }
-	 }
-      }
-      part {
-	 name:           "fade_clip";
-	 type:           RECT;
-	 mouse_events:   0;
-	 description {
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-	    state: "default" 0.0;
-	    color: 255 255 255 255;
-	 }
-	 description {
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-	    state: "faded" 0.0;
-	    color: 255 255 255 128;
-	 }
-	 description {
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-	    state: "high" 0.0;
-	    color: 255 0 0 220;
-	 }
-      }
-
-      part {
-	 name: "dial";
-	 mouse_events: 0;
-	 description {
-	    state: "default" 0.0;
-	    aspect: 1.0 1.0;
-	    aspect_preference: BOTH;
-	    rel1 {
-	       relative: 0.05 0.05;
-	    }
-	    rel2 {
-	       relative: 0.95 0.95;
-	    }
-	    image {
-	       normal: "clock/e17_clock_minutes_00.png";
-	    }
-	 }
+     part {
+       name: "base";
+       clip_to: "fade_clip";
+       description {
+          state: "default" 0.0;
+          align: 0.5 0.5;
+          aspect: 1.0 1.0;
+          aspect_preference: BOTH;
+          rel1.relative: 0.0 0.0;
+          rel2.relative: 1.0 1.0;
+          image.normal: "widget_bg.png";
+       }
+     part {
+       name: "base_overlay";
+       clip_to: "fade_clip";
+       description {
+         state: "default" 0.0;
+         align: 0.5 0.5;
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         rel1.relative: 0.0 0.0;
+         rel2.relative: 1.0 1.0;
+         image.normal: "temp_gauge.png";
+       }
+     }
+     part {
+       name: "overlay";
+       clip_to: "fade_clip";
+       description {
+         state: "default" 0.0;
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         rel1.to: "base";
+         rel2.to: "base";
+         image.normal: "widget_fg.png";
+       }
+     }
+     part {
+       name: "e.text.reading";
+       type: TEXT;
+       clip_to: "fade_clip";
+       description {
+         state: "default" 0.0;
+         align: 0.5 0.5;
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         rel1 {
+           relative: 0.5  0.77;
+           offset:  0 0;
+         }
+         rel2 {
+           relative: 0.5  0.77;
+           offset:  0 0;
+         }
+         color: 221 221 221 255;
+         color_class: "module_label";
+         text {
+           text:     "99^C";
+           font:     "Edje-Vera-Bold";
+           size:     10;
+           min:      1 1;
+           align:    0.0 0.0;
+               text_class: "module_small";           
+         }
+       }
+     }
+     part {
+       name: "fade_clip";
+       type: RECT;
+       mouse_events:   0;
+       description {
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         state: "default" 0.0;
+         color: 255 255 255 255;
+       }
+       description {
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         state: "faded" 0.0;
+         color: 255 255 255 128;
+       }
+       description {
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         state: "high" 0.0;
+         color: 255 0 0 220;
+       }
+     }
+     part {
+       name: "dial";
+       mouse_events: 0;
+       description {
+         state: "default" 0.0;
+         aspect: 1.0 1.0;
+         aspect_preference: BOTH;
+         rel1 {
+           relative: 0.05 0.05;
+         }
+         rel2 {
+           relative: 0.95 0.95;
+         }
+         image {
+           normal: "clock/e17_clock_minutes_00.png";
+         }
+       }
 #ifdef HAND2
 # undef HAND2
 #endif
 #define HAND2(num) \
-	    description { \
-	       state: num 0.0; \
-	       inherit: "default" 0.0; \
-	       image { \
-		  normal: "clock/e17_clock_minutes_"num".png"; \
-	       } \
-	    }
-	 HAND2("00")
-	 HAND2("01")
-	 HAND2("02")
-	 HAND2("03")
-	 HAND2("04")
-	 HAND2("05")
-	 HAND2("06")
-	 HAND2("07")
-	 HAND2("08")
-	 HAND2("09")
-	 HAND2("10")
-	 HAND2("11")
-	 HAND2("12")
-	 HAND2("13")
-	 HAND2("14")
-	 HAND2("15")
-	 HAND2("16")
-	 HAND2("17")
-	 HAND2("18")
-	 HAND2("19")
-	 HAND2("20")
-	 HAND2("40")
-	 HAND2("41")
-	 HAND2("42")
-	 HAND2("43")
-	 HAND2("44")
-	 HAND2("45")
-	 HAND2("46")
-	 HAND2("47")
-	 HAND2("48")
-	 HAND2("49")
-	 HAND2("50")
-	 HAND2("51")
-	 HAND2("52")
-	 HAND2("53")
-	 HAND2("54")
-	 HAND2("55")
-	 HAND2("56")
-	 HAND2("57")
-	 HAND2("58")
-	 HAND2("59")
+        description { \
+           state: num 0.0; \
+           inherit: "default" 0.0; \
+           image { \
+          normal: "clock/e17_clock_minutes_"num".png"; \
+           } \
+        }
+     HAND2("00")
+     HAND2("01")
+     HAND2("02")
+     HAND2("03")
+     HAND2("04")
+     HAND2("05")
+     HAND2("06")
+     HAND2("07")
+     HAND2("08")
+     HAND2("09")
+     HAND2("10")
+     HAND2("11")
+     HAND2("12")
+     HAND2("13")
+     HAND2("14")
+     HAND2("15")
+     HAND2("16")
+     HAND2("17")
+     HAND2("18")
+     HAND2("19")
+     HAND2("20")
+     HAND2("40")
+     HAND2("41")
+     HAND2("42")
+     HAND2("43")
+     HAND2("44")
+     HAND2("45")
+     HAND2("46")
+     HAND2("47")
+     HAND2("48")
+     HAND2("49")
+     HAND2("50")
+     HAND2("51")
+     HAND2("52")
+     HAND2("53")
+     HAND2("54")
+     HAND2("55")
+     HAND2("56")
+     HAND2("57")
+     HAND2("58")
+     HAND2("59")
       } // minutes part
    } // parts
 
 programs {
-	program {
-		name: "known";
-		signal: "e,state,known";
-		source: "e";
-		action: STATE_SET "default" 0.0;
-		target: "fade_clip";
-	}
-	program {
-		name: "unknown";
-		signal: "e,state,unknown";
-		source: "e";
-		action: STATE_SET "faded" 0.0;
-		target: "fade_clip";
-	}
-	program {
-		signal: "e,state,high"; source: "e";
-		action: STATE_SET "default" 0.0;
-		target: "fade_clip";
-		after: "pulse1";
-	}
-	 program {
-		name: "pulse1"; 
-		action: STATE_SET "high" 0.0;
-		transition: DECELERATE 0.5;
-		target: "fade_clip";
-		after: "pulse2";
-		}
-	program {
-		name: "pulse2"; 
-		action: STATE_SET "default" 0.0;
-		transition: ACCELERATE 0.5;
-		target: "fade_clip";
-		after: "pulse1";
-		}
-	program {
-		signal: "e,state,ok"; source: "e";
-		action: STATE_SET "default" 0.0;
-		target: "fade_clip";
-		}
+    program {
+        name: "known";
+        signal: "e,state,known";
+        source: "e";
+        action: STATE_SET "default" 0.0;
+        target: "fade_clip";
+    }
+    program {
+        name: "unknown";
+        signal: "e,state,unknown";
+        source: "e";
+        action: STATE_SET "faded" 0.0;
+        target: "fade_clip";
+    }
+    program {
+        signal: "e,state,high"; source: "e";
+        action: STATE_SET "default" 0.0;
+        target: "fade_clip";
+        after: "pulse1";
+    }
+    program {
+        name: "pulse1"; 
+        action: STATE_SET "high" 0.0;
+        transition: DECELERATE 0.5;
+        target: "fade_clip";
+        after: "pulse2";
+    }
+    program {
+        name: "pulse2"; 
+        action: STATE_SET "default" 0.0;
+        transition: ACCELERATE 0.5;
+        target: "fade_clip";
+        after: "pulse1";
+    }
+    program {
+        signal: "e,state,ok"; source: "e";
+        action: STATE_SET "default" 0.0;
+        target: "fade_clip";
+    }
    }
+ }
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 /*** MOD: BACKLIGHT ***/
@@ -11334,324 +11314,324 @@ group { name: "e/modules/clock/digital";
 }
 
 group { name: "e/modules/clock/calendar/dayname";
-		parts {
-			part {
-				name: "e.text.label";
-				type: TEXT;
-				effect: SHADOW;
-				scale: 1;
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					color: 200 10 10 255;
-					color3: 5 5 5 128;
-					align: 0.5 0.5;
-					rel1.offset: 3 3;
-					rel2.offset: -3 -3;
-					text {
-						text: "XXX";
-						font: FONT;
-						align: 0.5 0.5;
-						size: 10;
-						min: 1 1;
-						text_class: "module_small";
-						ellipsis: -1;
-					}
-				}
-			}
-		}
-	}
+        parts {
+            part {
+                name: "e.text.label";
+                type: TEXT;
+                effect: SHADOW;
+                scale: 1;
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    color: 200 10 10 255;
+                    color3: 5 5 5 128;
+                    align: 0.5 0.5;
+                    rel1.offset: 3 3;
+                    rel2.offset: -3 -3;
+                    text {
+                        text: "XXX";
+                        font: FONT;
+                        align: 0.5 0.5;
+                        size: 10;
+                        min: 1 1;
+                        text_class: "module_small";
+                        ellipsis: -1;
+                    }
+                }
+            }
+        }
+    }
 
-	group { name: "e/modules/clock/calendar/day";
-		parts {
-			part { name: "weekend"; type: RECT;
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					color: 0 0 0 0;
-				}
-				description { state: "weekend" 0.0;
-					inherit: "default" 0.0;
-					color: 0 0 0 32;
-				}
-			}
-			part { name: "day"; type: RECT;
-				mouse_events: 1;
-				description { state: "default" 0.0;
-					color: 234 189 117 55;
-				}
-				description { state: "today" 0.0;
-					inherit: "default" 0.0;
-					color: 200 5 5 128; ;
-				}
-			}
-			part { name: "e.text.label";
-				type: TEXT;
-				effect: SHADOW;
-				scale: 1;
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					align: 0.5 0.5;
-					color:  0 0 0 255;
-					color3: 0 0 0 0;
-					rel1.offset: 4 4;
-					rel2.offset: -4 -4;
-					text {
-						text: "88";
-						font: FONT;
-						align: 0.5 0.5;
-						size: 9;
-						min: 1 1;
-						text_class: "module_small";
-						ellipsis: -1;
-					}
-				}
-				description { state: "today" 0.0;
-					inherit: "default" 0.0;
-					color:  255 255 255 255;
-					color3: 0 0 0 0;
-					text.font: FONT_BOLD;
-				}
-				description { state: "weeknumb" 0.0;
-					inherit: "default" 0.0;
-					text.size: 7;
-					text.align: 0.8 0.35;
-					color_class: "calendar_weekend";
-				}  
-				description { state: "hidden" 0.0;
-					inherit: "default" 0.0;
-					color3: 0 0 0 0;
-				}
-			}
-		}
-		programs {
-			program { name: "weekend";
-				signal: "e,state,weekend";
-				source: "e";
-				action: STATE_SET "weekend" 0.0;
-				target: "weekend";
-			}
-			program { name: "weekday";
-				signal: "e,state,weekday";
-				source: "e";
-				action: STATE_SET "default" 0.0;
-				target: "weekend";
-			}
-			program { name: "hidden";
-				signal: "e,state,hidden";
-				source: "e";
-				action: STATE_SET "hidden" 0.0;
-				target: "e.text.label";
-			}
-			program { name: "visible";
-				signal: "e,state,visible";
-				source: "e";
-				action: STATE_SET "default" 0.0;
-				target: "e.text.label";
-			}
-			program { name: "today";
-				signal: "e,state,today";
-				source: "e";
-				action: STATE_SET "today" 0.0;
-				target: "day";
-				target: "e.text.label";
-			}
-			program { name: "someday";
-				signal: "e,state,someday";
-				source: "e";
-				action: STATE_SET "default" 0.0;
-				target: "day";
-			}
-			program { name: "weeknumber";
-				signal: "e,state,week"; source: "e";
-				action: STATE_SET "weeknumb" 0.0;
-				target: "e.text.label";
-			}  
-		}
-	}
+    group { name: "e/modules/clock/calendar/day";
+        parts {
+            part { name: "weekend"; type: RECT;
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    color: 0 0 0 0;
+                }
+                description { state: "weekend" 0.0;
+                    inherit: "default" 0.0;
+                    color: 0 0 0 32;
+                }
+            }
+            part { name: "day"; type: RECT;
+                mouse_events: 1;
+                description { state: "default" 0.0;
+                    color: 234 189 117 55;
+                }
+                description { state: "today" 0.0;
+                    inherit: "default" 0.0;
+                    color: 200 5 5 128; ;
+                }
+            }
+            part { name: "e.text.label";
+                type: TEXT;
+                effect: SHADOW;
+                scale: 1;
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    align: 0.5 0.5;
+                    color:  0 0 0 255;
+                    color3: 0 0 0 0;
+                    rel1.offset: 4 4;
+                    rel2.offset: -4 -4;
+                    text {
+                        text: "88";
+                        font: FONT;
+                        align: 0.5 0.5;
+                        size: 9;
+                        min: 1 1;
+                        text_class: "module_small";
+                        ellipsis: -1;
+                    }
+                }
+                description { state: "today" 0.0;
+                    inherit: "default" 0.0;
+                    color:  255 255 255 255;
+                    color3: 0 0 0 0;
+                    text.font: FONT_BOLD;
+                }
+                description { state: "weeknumb" 0.0;
+                    inherit: "default" 0.0;
+                    text.size: 7;
+                    text.align: 0.8 0.35;
+                    color_class: "calendar_weekend";
+                }
+                description { state: "hidden" 0.0;
+                    inherit: "default" 0.0;
+                    color3: 0 0 0 0;
+                }
+            }
+        }
+        programs {
+            program { name: "weekend";
+                signal: "e,state,weekend";
+                source: "e";
+                action: STATE_SET "weekend" 0.0;
+                target: "weekend";
+            }
+            program { name: "weekday";
+                signal: "e,state,weekday";
+                source: "e";
+                action: STATE_SET "default" 0.0;
+                target: "weekend";
+            }
+            program { name: "hidden";
+                signal: "e,state,hidden";
+                source: "e";
+                action: STATE_SET "hidden" 0.0;
+                target: "e.text.label";
+            }
+            program { name: "visible";
+                signal: "e,state,visible";
+                source: "e";
+                action: STATE_SET "default" 0.0;
+                target: "e.text.label";
+            }
+            program { name: "today";
+                signal: "e,state,today";
+                source: "e";
+                action: STATE_SET "today" 0.0;
+                target: "day";
+                target: "e.text.label";
+            }
+            program { name: "someday";
+                signal: "e,state,someday";
+                source: "e";
+                action: STATE_SET "default" 0.0;
+                target: "day";
+            }
+            program { name: "weeknumber";
+                signal: "e,state,week"; source: "e";
+                action: STATE_SET "weeknumb" 0.0;
+                target: "e.text.label";
+            }
+        }
+    }
 
-	group { name: "e/modules/clock/calendar";
-		parts {
-			part { name: "e.text.month";
-				type: TEXT;
-				scale: 1;
-				effect: SHADOW;
-				mouse_events: 1;
-				description { state: "default" 0.0;
-					color: 200 10 10 255;
-					color3: 5 5 5 128;
-					fixed: 0 1;
-					align: 0.0 0.5;
-					rel1 {
-						to_x: "prev";
-						relative: 1.0 0.0;
-						offset: 0 10;
-					}
-					rel2 {
-						relative: 1.0 0.0;
-						offset: -1 10;
-					}
-					text {
-						font: FONT_BOLD;
-						align: 0.0 0.5;
-						size: 14;
-						min: 0 1;
-						text_class: "module_normal";
-					}
-				}
-			}
-			part { name: "e.text.year";
-				type: TEXT;
-				scale: 1;
-				effect: SHADOW;
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					color: 200 10 10 255;
-					color3: 5 5 5 128;
-					fixed: 0 1;
-					align: 1.0 0.5;
-					rel1 {
-						relative: 0.0 0.0;
-						offset: 0 10;
-					}
-					rel2 {
-						to_x: "next";
-						relative: 0.0 0.0;
-						offset: -1 10;
-					}
-					text {
-						font: FONT_BOLD;
-						align: 1.0 0.5;
-						size: 14;
-						min: 0 1;
-						text_class: "module_normal";
-					}
-				}
-			}
-			part { name: "previm";
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					rel1 {
-						to: "prev";
-						offset: 0 5;
-					}
-					rel2 {
-						to: "prev";
-						offset: -1 -3;
-					}
-					image.normal: "arrow_left.png";
-					min: 13 17;
-					max: 13 17;
-				}
-				description { state: "pressed" 0.0;
-					inherit: "default" 0.0;
-					rel1.offset: 0 -1;
-					rel2.offset: -1 -2;
-				}
-			}
-			part { name: "prev";
-				type: RECT;
-				description { state: "default" 0.0;
-					align: 0.0 0.5;
-					color: 0 0 0 0;
-					aspect: 1.0 1.0;
-					aspect_preference: VERTICAL;
-					rel1 {
-						to_y: "e.text.month";
-						relative: 0.0 0.0;
-					}
-					rel2 {
-						to_y: "e.text.month";
-						relative: 0.0 1.0;
-					}
-				}
-				program { name: "prev_down";
-					signal: "mouse,down,1";
-					source: "prev";
-					action: STATE_SET "pressed" 0.0;
-					target: "previm";
-				}
-				program { name: "prev_up";
-					signal: "mouse,up,1";
-					source: "prev";
-					action: STATE_SET "default" 0.0;
-					target: "previm";
-				}
-				program { name: "prev_clicked";
-					signal: "mouse,clicked,1";
-					source: "prev";
-					action: SIGNAL_EMIT "e,action,prev" "";
-				}
-			}
-			part { name: "nextim";
-				mouse_events: 0;
-				description { state: "default" 0.0;
-					rel1 {
-						to: "next";
-						offset: 0 5;
-					}
-					rel2 {
-						to: "next";
-						offset: -1 -3;
-					}
-					image.normal: "arrow_right.png";
-					min: 13 17;
-					max: 13 17;
-				}
-				description { state: "pressed" 0.0;
-					inherit: "default" 0.0;
-					rel1.offset: 0 -1;
-					rel2.offset: -1 -2;
-				}
-			}
-			part { name: "next";
-				type: RECT;
-				description { state: "default" 0.0;
-					align: 1.0 0.5;
-					color: 0 0 0 0;
-					aspect: 1.0 1.0;
-					aspect_preference: VERTICAL;
-					rel1.to_y: "e.text.month";
-					rel1.relative: 1.0 0.0;
-					rel2.to_y: "e.text.month";
-					rel2.relative: 1.0 1.0;
-				}
-				program { name: "next_down";
-					signal: "mouse,down,1";
-					source: "next";
-					action: STATE_SET "pressed" 0.0;
-					target: "nextim";
-				}
-				program { name: "next_up";
-					signal: "mouse,up,1";
-					source: "next";
-					action: STATE_SET "default" 0.0;
-					target: "nextim";
-				}
-				program { name: "next_clicked";
-					signal: "mouse,clicked,1";
-					source: "next";
-					action: SIGNAL_EMIT "e,action,next" "";
-				}
-			}
-			part { name: "e.table.daynames"; type: TABLE;
-				description { state: "default" 0.0;
-					fixed: 0 1;
-					align: 0.5 0.0;
-					rel1.to_y: "e.text.month";
-					rel1.relative: 0.0 1.0;
-					rel1.offset: 2 2;
-					rel2.to_y: "e.text.month";
-					rel2.relative: 1.0 1.0;
-					rel2.offset: -3 2;
-					step: 7 1;
-					table {
-						homogeneous: TABLE;
-						padding: 1 1;
-						align: 0.5 0.5;
-						min: 1 1;
-					}
-				}
-				table { items {
-#define DAYNAME(x)													\
+    group { name: "e/modules/clock/calendar";
+        parts {
+            part { name: "e.text.month";
+                type: TEXT;
+                scale: 1;
+                effect: SHADOW;
+                mouse_events: 1;
+                description { state: "default" 0.0;
+                    color: 200 10 10 255;
+                    color3: 5 5 5 128;
+                    fixed: 0 1;
+                    align: 0.0 0.5;
+                    rel1 {
+                        to_x: "prev";
+                        relative: 1.0 0.0;
+                        offset: 0 10;
+                    }
+                    rel2 {
+                        relative: 1.0 0.0;
+                        offset: -1 10;
+                    }
+                    text {
+                        font: FONT_BOLD;
+                        align: 0.0 0.5;
+                        size: 14;
+                        min: 0 1;
+                        text_class: "module_normal";
+                    }
+                }
+            }
+            part { name: "e.text.year";
+                type: TEXT;
+                scale: 1;
+                effect: SHADOW;
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    color: 200 10 10 255;
+                    color3: 5 5 5 128;
+                    fixed: 0 1;
+                    align: 1.0 0.5;
+                    rel1 {
+                        relative: 0.0 0.0;
+                        offset: 0 10;
+                    }
+                    rel2 {
+                        to_x: "next";
+                        relative: 0.0 0.0;
+                        offset: -1 10;
+                    }
+                    text {
+                        font: FONT_BOLD;
+                        align: 1.0 0.5;
+                        size: 14;
+                        min: 0 1;
+                        text_class: "module_normal";
+                    }
+                }
+            }
+            part { name: "previm";
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    rel1 {
+                        to: "prev";
+                        offset: 0 5;
+                    }
+                    rel2 {
+                        to: "prev";
+                        offset: -1 -3;
+                    }
+                    image.normal: "arrow_left.png";
+                    min: 13 17;
+                    max: 13 17;
+                }
+                description { state: "pressed" 0.0;
+                    inherit: "default" 0.0;
+                    rel1.offset: 0 -1;
+                    rel2.offset: -1 -2;
+                }
+            }
+            part { name: "prev";
+                type: RECT;
+                description { state: "default" 0.0;
+                    align: 0.0 0.5;
+                    color: 0 0 0 0;
+                    aspect: 1.0 1.0;
+                    aspect_preference: VERTICAL;
+                    rel1 {
+                        to_y: "e.text.month";
+                        relative: 0.0 0.0;
+                    }
+                    rel2 {
+                        to_y: "e.text.month";
+                        relative: 0.0 1.0;
+                    }
+                }
+                program { name: "prev_down";
+                    signal: "mouse,down,1";
+                    source: "prev";
+                    action: STATE_SET "pressed" 0.0;
+                    target: "previm";
+                }
+                program { name: "prev_up";
+                    signal: "mouse,up,1";
+                    source: "prev";
+                    action: STATE_SET "default" 0.0;
+                    target: "previm";
+                }
+                program { name: "prev_clicked";
+                    signal: "mouse,clicked,1";
+                    source: "prev";
+                    action: SIGNAL_EMIT "e,action,prev" "";
+                }
+            }
+            part { name: "nextim";
+                mouse_events: 0;
+                description { state: "default" 0.0;
+                    rel1 {
+                        to: "next";
+                        offset: 0 5;
+                    }
+                    rel2 {
+                        to: "next";
+                        offset: -1 -3;
+                    }
+                    image.normal: "arrow_right.png";
+                    min: 13 17;
+                    max: 13 17;
+                }
+                description { state: "pressed" 0.0;
+                    inherit: "default" 0.0;
+                    rel1.offset: 0 -1;
+                    rel2.offset: -1 -2;
+                }
+            }
+            part { name: "next";
+                type: RECT;
+                description { state: "default" 0.0;
+                    align: 1.0 0.5;
+                    color: 0 0 0 0;
+                    aspect: 1.0 1.0;
+                    aspect_preference: VERTICAL;
+                    rel1.to_y: "e.text.month";
+                    rel1.relative: 1.0 0.0;
+                    rel2.to_y: "e.text.month";
+                    rel2.relative: 1.0 1.0;
+                }
+                program { name: "next_down";
+                    signal: "mouse,down,1";
+                    source: "next";
+                    action: STATE_SET "pressed" 0.0;
+                    target: "nextim";
+                }
+                program { name: "next_up";
+                    signal: "mouse,up,1";
+                    source: "next";
+                    action: STATE_SET "default" 0.0;
+                    target: "nextim";
+                }
+                program { name: "next_clicked";
+                    signal: "mouse,clicked,1";
+                    source: "next";
+                    action: SIGNAL_EMIT "e,action,next" "";
+                }
+            }
+            part { name: "e.table.daynames"; type: TABLE;
+                description { state: "default" 0.0;
+                    fixed: 0 1;
+                    align: 0.5 0.0;
+                    rel1.to_y: "e.text.month";
+                    rel1.relative: 0.0 1.0;
+                    rel1.offset: 2 2;
+                    rel2.to_y: "e.text.month";
+                    rel2.relative: 1.0 1.0;
+                    rel2.offset: -3 2;
+                    step: 7 1;
+                    table {
+                        homogeneous: TABLE;
+                        padding: 1 1;
+                        align: 0.5 0.5;
+                        min: 1 1;
+                    }
+                }
+                table { items {
+#define DAYNAME(x)							    						\
 						item {											\
 							position: x 0;								\
 							span: 1 1;									\
@@ -18485,7 +18465,7 @@ target: "region";
                text {
                   text_source: "e.text.label";
                   style: "fileman_icon_name";
-	          align: 0.5 0.0;
+                  align: 0.5 0.0;
                   min: 0 1;
                   text_class: "fileman_icon";
                }
@@ -19535,7 +19515,7 @@ target: "region";
                state: "default" 0.0;
                align: 0.5 0.0;
                fixed: 1 1;
-	       color: 224 224 224 255;
+               color: 224 224 224 255;
                color3: 0 0 0 64;
                rel1 {
                   to_y: "icon0";
@@ -19548,8 +19528,8 @@ target: "region";
                }
                text {
                   style: "fileman_desktop_icon_name";
-	          text_source: "e.text.label";
-	          align: 0.5 0.0;
+                  text_source: "e.text.label";
+                  align: 0.5 0.0;
                   min: 0 1;
                }
             }
@@ -30867,7 +30847,7 @@ target: "region";
          image: "exq-logo.png" COMP;
          image: "exq-dot.png" COMP;
          image: "exq-dot-glow.png" COMP;
-	 image: "bluew.png" COMP;
+         image: "bluew.png" COMP;
       }
       script {
          public is_ready;
@@ -30877,12 +30857,12 @@ target: "region";
          part {
             name: "base";
 
-	 description {
-	    state: "default" 0.0;
-	    image {
-	       normal: "bluew.png";
-	    }
-	 }
+     description {
+        state: "default" 0.0;
+        image {
+           normal: "bluew.png";
+        }
+     }
       } 
          part {
             name: "light";
@@ -34622,12 +34602,12 @@ target: "region";
       parts {
          part {
             name: "clip";
-	    type: RECT;
+            type: RECT;
             mouse_events: 0;
             description {
                state: "default" 0.0;
-            rel1.relative: 0.05 0.0;
-            rel2.relative: 0.95 1.0;
+               rel1.relative: 0.05 0.0;
+               rel2.relative: 0.95 1.0;
             }
          }
          part {
@@ -34649,7 +34629,7 @@ target: "region";
                   size: 10;
                   min: 0 1;
                   align: 0.5 0.5;
-	          text_class: "fileman_icon";
+                  text_class: "fileman_icon";
                }
             }
             description {
@@ -34746,12 +34726,12 @@ target: "region";
       parts {
          part {
             name: "clip";
-	    type: RECT;
-	    mouse_events: 0;
+            type: RECT;
+            mouse_events: 0;
             description {
                state: "default" 0.0;
-            rel1.relative: 0.05 0.0;
-            rel2.relative: 0.95 1.0;
+               rel1.relative: 0.05 0.0;
+               rel2.relative: 0.95 1.0;
             }
          }
          part {
@@ -35066,7 +35046,7 @@ target: "region";
             }
             description {
                state: "selected" 0.0;
-	       inherit: "default" 0.0;
+               inherit: "default" 0.0;
                rel1 {
                   offset: 2 -13;
                   relative: 0.0 1.0;
@@ -35225,35 +35205,33 @@ target: "region";
          program {
             name: "thumb_show2";
             action: STATE_SET "visible" 0.0;
-	    transition: DECELERATE 0.1;
+            transition: DECELERATE 0.1;
             target: "clip";
          }
-	 program {
+         program {
             name: "go_big";
             action: STATE_SET "visible" 0.0;
             target: "over_clip";
             target: "over";
             target: "over2";
             after: "go_big2";
-	 }
-
-	 program {
+         }
+         program {
             name: "go_big2";
             action: STATE_SET "huge" 0.0;
             transition: DECELERATE 0.4;
             target: "over_clip";
             after: "go_big3";
-	 }
-
-	 program {
+         }
+         program {
             name: "go_big3";
             action: STATE_SET "default" 0.0;
             transition: DECELERATE 0.2;
             target: "over_clip";
             target: "over";
             target: "over2";
-	 }
-	 program {
+         }
+         program {
             name: "action_go";
             signal: "e,action,go";
             source: "e";
@@ -35262,7 +35240,7 @@ target: "region";
             target: "go_big2";
             target: "go_big3";
             after: "go_big";
-	 }
+         }
       }
    }
    group {
@@ -35504,7 +35482,7 @@ target: "region";
                }
             }
             description {
-	        state: "selected" 0.0;
+                state: "selected" 0.0;
                 inherit: "default" 0.0;
                 color: 200 200 200 255;
             }
@@ -35515,18 +35493,18 @@ target: "region";
             mouse_events: 0;
             description {
                state: "default" 0.0;
-	       visible: 0;
-	       rel1.to: "base";
-	       rel1.relative: 0.0 1.0;
-	       rel2.to: "base";
+               visible: 0;
+               rel1.to: "base";
+               rel1.relative: 0.0 1.0;
+               rel2.to: "base";
             }
             description {
                state: "detail" 0.0;
-	       inherit: "default" 0.0;
-	       rel1.to: "e.text.detail";
-	       rel2.to: "e.text.detail";
+               inherit: "default" 0.0;
+               rel1.to: "e.text.detail";
+               rel2.to: "e.text.detail";
             }
-	 }
+         }
          part {
             name: "event";
             type: RECT;
@@ -35544,8 +35522,8 @@ target: "region";
             action: STATE_SET "selected" 0.0;
             target: "bg";
             target: "outline";
-	    target: "e.text.label";
-	    target: "e.text.detail";
+            target: "e.text.label";
+            target: "e.text.detail";
             transition: ACCELERATE 0.0;
          }
          program {
@@ -35556,8 +35534,8 @@ target: "region";
             transition: LINEAR 0.0;
             target: "bg";
             target: "outline";
-	    target: "e.text.label";
-	    target: "e.text.detail";
+            target: "e.text.label";
+            target: "e.text.detail";
          }
          program {
             name: "mark";
@@ -36284,138 +36262,138 @@ target: "region";
 /////////////////////////////////////////////////////////////////////////////
 /*** MOD: CONF ***/
 
-	group {
-		name: "e/modules/conf/main";
-		images {
-                        image: "icon_configuration.png" COMP;
-			image: "bt_base1.png" COMP;
-			image: "bt_base2.png" COMP;
-			image: "bt_hilight.png" COMP;
-			image: "bt_shine.png" COMP;
-			image: "bt_glow.png" COMP;
-		}
-		min: 16 16;
-		max: 128 128;
-		parts {
-			part {
-				name: "button_image";
-				mouse_events: 1;
-				scale: 1;
-				description {
-					state: "default" 0.0;
-					fixed: 1 1;
-					align: 0.5 0.5;
-               min: 32 16;
-					image {
-						normal: "bt_base2.png";
-						border: 7 7 7 7;
-					}
-				}
-				description {
-					state: "clicked" 0.0;
-					inherit: "default" 0.0;
-					image.normal: "bt_base1.png";
-				}
-				program {
-					name: "button_down";
-					signal: "mouse,down,1";
-					source: "button_image";
-					action: STATE_SET "clicked" 0.0;
-					target: "button_image";
-					target: "over3";
-				}
-				program {
-					name: "button_up";
-					signal: "mouse,up,1";
-					source: "button_image";
-					action: STATE_SET "default" 0.0;
-					target: "button_image";
-					target: "over3";
-				}
-				program {
-					name: "button_click";
-					signal: "mouse,clicked,1";
-					source: "button_image";
-					action: SIGNAL_EMIT "e,action,conf" "";
-				}
-			}
-			part {
-				name: "icon";
-				mouse_events: 0;
-				description {
-					state: "default" 0.0;
-					aspect: 1.0 1.0;
-					aspect_preference: BOTH;
-					visible: 1;
-					image.normal: "icon_configuration.png";
-					rel1 {
-						to: "button_image";
-						relative: 0.0  0.0;
-						offset: 3    3;
-					}
-					rel2 {
-						relative: 1.0  1.0;
-						offset: -4   -4;
-						to: "button_image";
-					}
-				}
-			}
-			part {
-				name: "over1";
-				mouse_events: 0;
-				description {
-					state: "default" 0.0;
-					rel1.to: "button_image";
-					rel2.to: "button_image";
-					rel2.relative: 1.0 0.5;
-					image {
-						normal: "bt_hilight.png";
-						border: 7 7 7 0;
-					}
-				}
-			}
-			part {
-				name: "over2";
-				mouse_events: 0;
-				description {
-					state: "default" 0.0;
-					rel1.to: "button_image";
-					rel2.to: "button_image";
-					image {
-						normal: "bt_shine.png";
-						border: 7 7 7 7;
-					}
-				}
-			}
-			part {
-				name: "over3";
-				mouse_events: 0;
-				description {
-					state: "default" 0.0;
-					rel1.to: "button_image";
-					rel2.to: "button_image";
-					visible: 0;
-					color: 255 255 255 0;
-					image {
-						normal: "bt_glow.png";
-						border: 12 12 12 12;
-					}
-					fill.smooth : 0;
-				}
-				description {
-					state: "clicked" 0.0;
-					inherit: "default" 0.0;
-					visible: 1;
-					color: 255 255 255 255;
-				}
-			}
-		}
-	}
+    group {
+        name: "e/modules/conf/main";
+        images {
+            image: "icon_configuration.png" COMP;
+            image: "bt_base1.png" COMP;
+            image: "bt_base2.png" COMP;
+            image: "bt_hilight.png" COMP;
+            image: "bt_shine.png" COMP;
+            image: "bt_glow.png" COMP;
+        }
+        min: 16 16;
+        max: 128 128;
+        parts {
+            part {
+                name: "button_image";
+                mouse_events: 1;
+                scale: 1;
+                description {
+                    state: "default" 0.0;
+                    fixed: 1 1;
+                    align: 0.5 0.5;
+                    min: 32 16;
+                    image {
+                        normal: "bt_base2.png";
+                        border: 7 7 7 7;
+                    }
+                }
+                description {
+                    state: "clicked" 0.0;
+                    inherit: "default" 0.0;
+                    image.normal: "bt_base1.png";
+                }
+                program {
+                    name: "button_down";
+                    signal: "mouse,down,1";
+                    source: "button_image";
+                    action: STATE_SET "clicked" 0.0;
+                    target: "button_image";
+                    target: "over3";
+                }
+                program {
+                    name: "button_up";
+                    signal: "mouse,up,1";
+                    source: "button_image";
+                    action: STATE_SET "default" 0.0;
+                    target: "button_image";
+                    target: "over3";
+                }
+                program {
+                    name: "button_click";
+                    signal: "mouse,clicked,1";
+                    source: "button_image";
+                    action: SIGNAL_EMIT "e,action,conf" "";
+                }
+            }
+            part {
+                name: "icon";
+                mouse_events: 0;
+                description {
+                    state: "default" 0.0;
+                    aspect: 1.0 1.0;
+                    aspect_preference: BOTH;
+                    visible: 1;
+                    image.normal: "icon_configuration.png";
+                    rel1 {
+                        to: "button_image";
+                        relative: 0.0  0.0;
+                        offset: 3    3;
+                    }
+                    rel2 {
+                        relative: 1.0  1.0;
+                        offset: -4   -4;
+                        to: "button_image";
+                    }
+                }
+            }
+            part {
+                name: "over1";
+                mouse_events: 0;
+                description {
+                    state: "default" 0.0;
+                    rel1.to: "button_image";
+                    rel2.to: "button_image";
+                    rel2.relative: 1.0 0.5;
+                    image {
+                        normal: "bt_hilight.png";
+                        border: 7 7 7 0;
+                    }
+                }
+            }
+            part {
+                name: "over2";
+                mouse_events: 0;
+                description {
+                    state: "default" 0.0;
+                    rel1.to: "button_image";
+                    rel2.to: "button_image";
+                    image {
+                        normal: "bt_shine.png";
+                        border: 7 7 7 7;
+                    }
+                }
+            }
+            part {
+                name: "over3";
+                mouse_events: 0;
+                description {
+                    state: "default" 0.0;
+                    rel1.to: "button_image";
+                    rel2.to: "button_image";
+                    visible: 0;
+                    color: 255 255 255 0;
+                    image {
+                        normal: "bt_glow.png";
+                        border: 12 12 12 12;
+                    }
+                    fill.smooth : 0;
+                }
+                description {
+                    state: "clicked" 0.0;
+                    inherit: "default" 0.0;
+                    visible: 1;
+                    color: 255 255 255 255;
+                }
+            }
+        }
+    }
 
 /////////////////////////////////////////////////////////////////////////////
 /*** MOD: ILLUME-HOME-TOGGLE ***/
 
-	group {
+    group {
 		name: "e/modules/illume_home_toggle/main";
 		images.image: "illume-home.png" COMP;
 		images {
@@ -37942,166 +37920,166 @@ target: "region";
          image: "comp-sh1.png" COMP;
       }
       parts {
-	part { name: "clipper";
-	type: RECT;
-	mouse_events: 0;
-	clip_to: "clipper2";
-	  description { state: "default" 0.0;
-	  visible: 0;
-	  color: 255 255 255 0;
-	    rel1 {
-	    relative: -1.0  -1.0;
-	    offset: -9999 -9999;
-	    }
-	    rel2 {
-	    relative: 2.0   2.0;
-	    offset: 9999  9999;
-	    }
-	  }
-	  description { state: "visible" 0.0;
-	  inherit: "default" 0.0;
-	  visible: 1;
-	  color: 255 255 255 255;
-	  }
-	  description { state: "big" 0.0;
-	  inherit: "default" 0.0;
-	  color: 255 255 255 0;
-	  }
-	}
-	part { name: "clipper2";
-	type: RECT;
-	mouse_events: 0;
-	  description { state: "default" 0.0;
-	  color: 255 255 255 255;
-	  rel1.to: "clipper";
-	  rel2.to: "clipper";
-	  }
-	  description { state: "visible" 0.0;
-	  inherit: "default" 0.0;
-	  }
-	  description { state: "big" 0.0;
-	  inherit: "default" 0.0;
-	  color: 255 255 255 0;
-	  }
-	}
-	part { name: "shadow";
-	mouse_events: 0;
-	clip_to: "clipper";
-	  description { state: "default" 0.0;
-	    image {
-	    normal: "comp-sh1.png";
-	    border: 18 18 18 18;
-	    middle: 0;
-	    }
-	  fill.smooth: 0;
-	    rel1 {
-	    to: "e.swallow.content";
-	    relative: 0.0  0.0;
-	    offset: -16  -14;
-	    }
-	    rel2 {
-	    to: "e.swallow.content";
-	    relative: 1.0  1.0;
-	    offset: 15   17;
-	    }
-	  }
-	  description { state: "hidden" 0.0;
-	  inherit: "default" 0.0;
-	  visible: 0;
-	  }
-	}
-	part { name: "shower";
-	type: RECT;
-	mouse_events: 0;
-	  description { state: "default" 0.0;
-	  visible: 0;
-	    rel1 {
-	    relative: 0.05  0.05;
-	    offset: 0    0;
-	    }
-	    rel2 {
-	    relative: 0.95  0.95;
-	    offset: -1   -1;
-	    }
-	  }
-	  description { state: "visible" 0.0;
-	  inherit: "default" 0.0;
-	    rel1 {
-	    relative: 0.0  0.0;
-	    }
-	    rel2 {
-	    relative: 1.0  1.0;
-	    }
-	  }
-	  description { state: "big" 0.0;
-	  inherit: "default" 0.0;
-	    rel1 {
-	    relative: -0.3  -0.3;
-	    }
-	    rel2 {
-	    relative: 1.3  1.3;
-	    }
-	  }
-	}
-	part { name: "e.swallow.content";
-	type: SWALLOW;
-	clip_to: "clipper";
-	mouse_events: 0;
-	  description { state: "default" 0.0;
-	    rel1 {
-	    to: "shower";
-	    }
-	    rel2 {
-	    to: "shower";
-	    }
-	  }
-	}
+        part { name: "clipper";
+          type: RECT;
+          mouse_events: 0;
+          clip_to: "clipper2";
+          description { state: "default" 0.0;
+             visible: 0;
+             color: 255 255 255 0;
+             rel1 {
+                 relative: -1.0  -1.0;
+                 offset: -9999 -9999;
+             }
+             rel2 {
+                 relative: 2.0   2.0;
+                 offset: 9999  9999;
+             }
+          }
+          description { state: "visible" 0.0;
+             inherit: "default" 0.0;
+             visible: 1;
+             color: 255 255 255 255;
+          }
+          description { state: "big" 0.0;
+             inherit: "default" 0.0;
+             color: 255 255 255 0;
+          }
+       }
+       part { name: "clipper2";
+         type: RECT;
+         mouse_events: 0;
+         description { state: "default" 0.0;
+            color: 255 255 255 255;
+            rel1.to: "clipper";
+            rel2.to: "clipper";
+         }
+         description { state: "visible" 0.0;
+            inherit: "default" 0.0;
+         }
+         description { state: "big" 0.0;
+            inherit: "default" 0.0;
+            color: 255 255 255 0;
+         }
+       }
+       part { name: "shadow";
+          mouse_events: 0;
+          clip_to: "clipper";
+          description { state: "default" 0.0;
+             image {
+                normal: "comp-sh1.png";
+                border: 18 18 18 18;
+                middle: 0;
+             }
+             fill.smooth: 0;
+             rel1 {
+                to: "e.swallow.content";
+                relative: 0.0  0.0;
+                offset: -16  -14;
+             }
+             rel2 {
+                to: "e.swallow.content";
+                relative: 1.0  1.0;
+                offset: 15   17;
+             }
+         }
+         description { state: "hidden" 0.0;
+            inherit: "default" 0.0;
+            visible: 0;
+         }
+     }
+     part { name: "shower";
+       type: RECT;
+       mouse_events: 0;
+       description { state: "default" 0.0;
+          visible: 0;
+          rel1 {
+             relative: 0.05  0.05;
+             offset: 0    0;
+          }
+          rel2 {
+             relative: 0.95  0.95;
+             offset: -1   -1;
+          }
+       }
+       description { state: "visible" 0.0;
+          inherit: "default" 0.0;
+          rel1 {
+             relative: 0.0  0.0;
+          }
+          rel2 {
+             relative: 1.0  1.0;
+          }
+       }
+       description { state: "big" 0.0;
+          inherit: "default" 0.0;
+          rel1 {
+             relative: -0.3  -0.3;
+          }
+          rel2 {
+             relative: 1.3  1.3;
+          }
       }
+    }
+    part { name: "e.swallow.content";
+      type: SWALLOW;
+      clip_to: "clipper";
+      mouse_events: 0;
+      description { state: "default" 0.0;
+        rel1 {
+           to: "shower";
+        }
+        rel2 {
+           to: "shower";
+        }
+      }
+    }
+}
      programs {
        program { name: "shadow-on";
-       signal: "e,state,shadow,on";
-       source: "e";
-       action: STATE_SET "default" 0.0;
-       target: "shadow";
+         signal: "e,state,shadow,on";
+         source: "e";
+         action: STATE_SET "default" 0.0;
+         target: "shadow";
        }
        program { name: "shadow-off";
-       signal: "e,state,shadow,off";
-       source: "e";
-       action: STATE_SET "hidden" 0.0;
-       target: "shadow";
+         signal: "e,state,shadow,off";
+         source: "e";
+         action: STATE_SET "hidden" 0.0;
+         target: "shadow";
        }
        program { name: "show1";
-       signal: "e,state,visible,on";
-       source: "e";
-       action: STATE_SET "visible" 0.0;
-       transition: DECELERATE 0.05;
-       target: "clipper";
-       target: "clipper2";
-       target: "shower";
-       after: "show2";
+         signal: "e,state,visible,on";
+         source: "e";
+         action: STATE_SET "visible" 0.0;
+         transition: DECELERATE 0.05;
+         target: "clipper";
+         target: "clipper2";
+         target: "shower";
+         after: "show2";
        }
        program { name: "show2";
-       action: SIGNAL_EMIT "e,action,show,done" "e";
+         action: SIGNAL_EMIT "e,action,show,done" "e";
        }
        program { name: "hide1";
-       signal: "e,state,visible,off";
-       source: "e";
-       action: STATE_SET "big" 0.0;
-       transition: ACCELERATE 0.25;
-       target: "clipper";
-       target: "clipper2";
-       target: "shower";
-       after: "hide2";
+         signal: "e,state,visible,off";
+         source: "e";
+         action: STATE_SET "big" 0.0;
+         transition: ACCELERATE 0.25;
+         target: "clipper";
+         target: "clipper2";
+         target: "shower";
+         after: "hide2";
        }
        program { name: "hide2";
-       action: STATE_SET "default" 0.0;
-       target: "clipper";
-       target: "clipper2";
-       target: "shower";
-       after: "hide3";         
+         action: STATE_SET "default" 0.0;
+         target: "clipper";
+         target: "clipper2";
+         target: "shower";
+         after: "hide3";
        }
        program { name: "hide3";
-       action: SIGNAL_EMIT "e,action,hide,done" "e";
+         action: SIGNAL_EMIT "e,action,hide,done" "e";
        }
      }
    }
@@ -38850,27 +38828,26 @@ target: "region";
       }
 
       parts {
-	 part {
-	 name: "base";
-	 type: RECT;
-	 mouse_events: 1;
-
-	    description {
-	    state: "default" 0.0;
-	    color: 0 0 0 0;
-	    }
-	 }
-	 part {
-	 name: "begin";
-	 type: RECT;
-	 mouse_events: 0;
-	    description {
-	    state: "default" 0.0;
-	    max: 1 1;
-	    align: 0.0 0.0;
-	    color: 0 0 0 0;
-	    }
-	 }
+        part {
+          name: "base";
+          type: RECT;
+          mouse_events: 1;
+          description {
+            state: "default" 0.0;
+            color: 0 0 0 0;
+          }
+        }
+        part {
+          name: "begin";
+          type: RECT;
+          mouse_events: 0;
+          description {
+            state: "default" 0.0;
+            max: 1 1;
+            align: 0.0 0.0;
+            color: 0 0 0 0;
+          }
+        }
 
 #define NAV_BUTTON(NAME, ICON, REL_TO, OFF_X)	\
 	 part {					\
@@ -38994,25 +38971,24 @@ target: "region";
 	 NAV_BUTTON("refresh",    "refresh",          "up_bg", 1);
 	 NAV_BUTTON("favorites",  "favorites",        "refresh_bg", 1);
 
-	 part {
-	 name: "e.swallow.pathbar";
-	 type: SWALLOW;
-	    description {
-	    state: "default" 0.0;
-	    align: 0.0 0.5;
+     part {
+     name: "e.swallow.pathbar";
+     type: SWALLOW;
+        description {
+        state: "default" 0.0;
+        align: 0.0 0.5;
 
-	       /* rel1.to_x: "favorites_base"; */
-	    rel1.to_x: "favorites_bg";
-	    rel1.relative: 1.0 0.0;
-	    rel1.offset: 10 0;
-	    rel2.offset: -2 -1;
-	    color: 200 0 0 200;
-	    }
-	 }
-			
-      }
+           /* rel1.to_x: "favorites_base"; */
+        rel1.to_x: "favorites_bg";
+        rel1.relative: 1.0 0.0;
+        rel1.offset: 10 0;
+        rel2.offset: -2 -1;
+        color: 200 0 0 200;
+        }
+     }
+   }
 
-      programs {
+   programs {
 #define NAV_BUTTON_PROG(NAME)					\
 	 program {						\
 	 name: NAME"_click";					\
@@ -39071,96 +39047,96 @@ target: "region";
       image: "icon_right_arrow.png" COMP;
       }
 
-      parts {
-	 part {
-	 name: "base";
-	 type: RECT;
-	 mouse_events: 1;
-	    description {
-	    state: "default" 0.0;
-	       rel1 {
-	       to_x: "left_arrow";
-	       relative: 1.0 0.0;
-	       }
-	       rel2 {
-	       to_x: "right_arrow";
-	       relative: 0.0 1.0;
-	       }
-	    color: 0 0 0 0;
-	    }
-	 }
-	 part {
-	 name: "clipper";
-	 type: RECT;
-	 mouse_events: 0;
-	    description {
-	    state: "default" 0.0;
-	    rel1.to: "base";
-	    rel2.to: "base";
-	    }
-	 }
-	 part {
-	 name: "e.swallow.content";
-	 type: SWALLOW;
-	 clip_to: "clipper";
-	    description {
-	    state: "default" 0.0;
-	    rel1.to: "clipper";
-	    rel2.to: "clipper";
-	    }
-	 }
-	 part {
-	 name: "left_arrow";
-	 type: IMAGE;
-	 mouse_events: 1;
-	 scale: 1;
-	    description {
-	    state: "default" 0.0;
-	       /* aspect: 1.0 1.0;
-		* aspect_preference: VERTICAL; */
-	    align: 0.0 0.5;
-	    min: 16 16;
-	    max: 16 16;
-	    image.normal: "icon_left_arrow.png";
-	    }
-	 }
-	 part {
-	 name: "right_arrow";
-	 type: IMAGE;
-	 mouse_events: 1;
-	 scale: 1;
-	    description {
-	    state: "default" 0.0;
-	    align: 1.0 0.5;
-	    min: 16 16;
-	    max: 16 16;
-	    image.normal: "icon_right_arrow.png";
-	    }
-	 }
-	 part {
-	 name: "e.dragable.hbar";
-	 mouse_events: 0;
-	    dragable {
-	    x: 1 1 0;
-	    y: 0 0 0;
-	    confine: "base";
-	    }
-	    description {
-	    state: "default" 0.0;
-	    visible: 0;
-	    rel1.to: "base";
-	    rel2.to: "base";
-	    }
-	 }
-	 part {
-	 name: "event";
-  type: SPACER;
-	 mouse_events: 1;
-	 repeat_events: 1;
-	    description {
-	    state: "default" 0.0;
-	    }
-	 }
+   parts {
+     part {
+     name: "base";
+     type: RECT;
+     mouse_events: 1;
+        description {
+        state: "default" 0.0;
+           rel1 {
+           to_x: "left_arrow";
+           relative: 1.0 0.0;
+           }
+           rel2 {
+           to_x: "right_arrow";
+           relative: 0.0 1.0;
+           }
+        color: 0 0 0 0;
+        }
+     }
+     part {
+     name: "clipper";
+     type: RECT;
+     mouse_events: 0;
+        description {
+        state: "default" 0.0;
+        rel1.to: "base";
+        rel2.to: "base";
+        }
+     }
+     part {
+     name: "e.swallow.content";
+     type: SWALLOW;
+     clip_to: "clipper";
+        description {
+        state: "default" 0.0;
+        rel1.to: "clipper";
+        rel2.to: "clipper";
+        }
+     }
+     part {
+     name: "left_arrow";
+     type: IMAGE;
+     mouse_events: 1;
+     scale: 1;
+        description {
+        state: "default" 0.0;
+           /* aspect: 1.0 1.0;
+        * aspect_preference: VERTICAL; */
+        align: 0.0 0.5;
+        min: 16 16;
+        max: 16 16;
+        image.normal: "icon_left_arrow.png";
+        }
+     }
+     part {
+     name: "right_arrow";
+     type: IMAGE;
+     mouse_events: 1;
+     scale: 1;
+        description {
+        state: "default" 0.0;
+        align: 1.0 0.5;
+        min: 16 16;
+        max: 16 16;
+        image.normal: "icon_right_arrow.png";
+        }
+     }
+     part {
+     name: "e.dragable.hbar";
+     mouse_events: 0;
+        dragable {
+        x: 1 1 0;
+        y: 0 0 0;
+        confine: "base";
+        }
+        description {
+        state: "default" 0.0;
+        visible: 0;
+        rel1.to: "base";
+        rel2.to: "base";
+        }
+     }
+     part {
+     name: "event";
+     type: SPACER;
+     mouse_events: 1;
+     repeat_events: 1;
+        description {
+          state: "default" 0.0;
+        }
+     }
       }
       program {
       name: "sb_left";
@@ -39191,175 +39167,175 @@ target: "region";
       image: "bt_dis_shine.png" COMP;
       }
 
-      parts {
-	 part {
-	 name: "bg";
-	 type: IMAGE;
-	 mouse_events: 0;
-	    description {
-	    state: "default" 0.0;
-	    min: 28 28;
-	       image {
-	       normal: "bt_base2.png";
-	       border: 7 7 7 7;
-	       }
-	    }
-	    description {
-	    state: "down" 0.0;
-	    inherit: "default" 0.0;
-	    image.normal: "bt_base1.png";
-	    }
-	 }
-	 part {
-	 name: "label3";
-	 type: TEXT;
-	 mouse_events: 0;
-	 scale: 1;
-	    description {
-	    state: "default" 0.0;
-	    rel1.to: "e.text.label";
-	    rel2.to: "e.text.label";
-	    visible: 0;
-	       text {
-	       font: "Sans";
-	       text_source: "e.text.label";
-	       size: 10;
-	       min: 1 1;
-	       }
-	    }
-	 }
-	 part {
-	 name: "label2";
-	 type: TEXT;
-	 mouse_events: 0;
-	 scale: 1;
-	    description {
-	    state: "default" 0.0;
-	    max: 150 32;
-	    rel1.to: "e.text.label";
-	    rel2.to: "e.text.label";
-	    color: 224 224 224 255;
-	       text {
-	       font: "Sans";
-	       text_source: "e.text.label";
-	       size: 10;
-	       min: 0 1;
-	       align: 0.5 0.5;
-	       elipsis: 0.0;
-	       }
-	    }
-	    description {
-	    state: "selected" 0.0;
-	    inherit: "default" 0.0;
-	    visible: 0;
-	    }
-	 }
-	 part {
-	 name: "e.text.label";
-	 type: TEXT;
-	 mouse_events: 0;
-	 scale: 1;
-	    description {
-	    state: "default" 0.0;
-	    max: 150 32;
-	    rel1.offset: 7 0;
-	    rel2.offset: -8 -1;
-	    visible: 0;
-	    color: 255 255 255 255;
-	       text {
-	       font: "Sans:style=Bold";
-	       size: 10;
-	       min: 0 1;
-	       max: 1 0;
-	       align: 0.5 0.5;
-	       elipsis: 0.0;
-	       }
-	    }
-	    description {
-	    state: "selected" 0.0;
-	    inherit: "default" 0.0;
-	    visible: 1;
-	    }
-	 }
-	 part {
-	 name: "fg1";
-	 type: IMAGE;
-	 mouse_events: 0;
-	    description {
-	    state: "default" 0.0;
-	    rel1.to: "bg";
-	       rel2 {
-	       to: "bg";
-	       relative: 1.0 0.5;
-	       }
-	       image {
-	       normal: "bt_hilight.png";
-	       border: 7 7 7 0;
-	       }
-	    }
-	 }
-	 part {
-	 name: "fg2";
-	 type: IMAGE;
-	 mouse_events: 0;
-	    description {
-	    state: "default" 0.0;
-	    rel1.to: "bg";
-	    rel2.to: "bg";
-	       image {
-	       normal: "bt_shine.png";
-	       border: 7 7 7 7;
-	       }
-	    }
-	 }
-	 part {
-	 name: "event";
-	 type: RECT;
-	 mouse_events: 1;
-	 ignore_flags: ON_HOLD;
-	    description {
-	    state: "default" 0.0;
-	    color: 0 0 0 0;
-	    }
-	 }
-      }
-      programs {
-	 program {
-	 name: "click";
-	 signal: "mouse,down,1";
-	 source: "event";
-	 action: STATE_SET "down" 0.0;
-	 target: "bg";
-	 }
-	 program {
-	 name: "unclick";
-	 signal: "mouse,up,1";
-	 source: "event";
-	 action: STATE_SET "default" 0.0;
-	 target: "bg";
-	 }
-	 program {
-	 name: "send";
-	 signal: "mouse,clicked,1";
-	 source: "event";
-	 action: SIGNAL_EMIT "e,action,click" "";
-	 }
-	 program {
-	 name: "select";
-	 signal: "e,state,selected";
-	 source: "e";
-	 action: STATE_SET "selected" 0.0;
-	 target: "e.text.label";
-	 target: "label2";
-	 }
-	 program {
-	 name: "normal";
-	 signal: "e,state,default";
-	 source: "e";
-	 action: STATE_SET "default" 0.0;
-	 target: "e.text.label";
-	 target: "label2";
-	 }
+   parts {
+     part {
+     name: "bg";
+     type: IMAGE;
+     mouse_events: 0;
+        description {
+        state: "default" 0.0;
+        min: 28 28;
+           image {
+           normal: "bt_base2.png";
+           border: 7 7 7 7;
+           }
+        }
+        description {
+        state: "down" 0.0;
+        inherit: "default" 0.0;
+        image.normal: "bt_base1.png";
+        }
+     }
+     part {
+     name: "label3";
+     type: TEXT;
+     mouse_events: 0;
+     scale: 1;
+        description {
+        state: "default" 0.0;
+        rel1.to: "e.text.label";
+        rel2.to: "e.text.label";
+        visible: 0;
+           text {
+           font: "Sans";
+           text_source: "e.text.label";
+           size: 10;
+           min: 1 1;
+           }
+        }
+     }
+     part {
+     name: "label2";
+     type: TEXT;
+     mouse_events: 0;
+     scale: 1;
+        description {
+        state: "default" 0.0;
+        max: 150 32;
+        rel1.to: "e.text.label";
+        rel2.to: "e.text.label";
+        color: 224 224 224 255;
+           text {
+           font: "Sans";
+           text_source: "e.text.label";
+           size: 10;
+           min: 0 1;
+           align: 0.5 0.5;
+           elipsis: 0.0;
+           }
+        }
+        description {
+        state: "selected" 0.0;
+        inherit: "default" 0.0;
+        visible: 0;
+        }
+     }
+     part {
+     name: "e.text.label";
+     type: TEXT;
+     mouse_events: 0;
+     scale: 1;
+        description {
+        state: "default" 0.0;
+        max: 150 32;
+        rel1.offset: 7 0;
+        rel2.offset: -8 -1;
+        visible: 0;
+        color: 255 255 255 255;
+           text {
+           font: "Sans:style=Bold";
+           size: 10;
+           min: 0 1;
+           max: 1 0;
+           align: 0.5 0.5;
+           elipsis: 0.0;
+           }
+        }
+        description {
+        state: "selected" 0.0;
+        inherit: "default" 0.0;
+        visible: 1;
+        }
+     }
+     part {
+     name: "fg1";
+     type: IMAGE;
+     mouse_events: 0;
+        description {
+        state: "default" 0.0;
+        rel1.to: "bg";
+           rel2 {
+           to: "bg";
+           relative: 1.0 0.5;
+           }
+           image {
+           normal: "bt_hilight.png";
+           border: 7 7 7 0;
+           }
+        }
+     }
+     part {
+     name: "fg2";
+     type: IMAGE;
+     mouse_events: 0;
+        description {
+        state: "default" 0.0;
+        rel1.to: "bg";
+        rel2.to: "bg";
+           image {
+           normal: "bt_shine.png";
+           border: 7 7 7 7;
+           }
+        }
+     }
+     part {
+     name: "event";
+     type: RECT;
+     mouse_events: 1;
+     ignore_flags: ON_HOLD;
+        description {
+        state: "default" 0.0;
+        color: 0 0 0 0;
+        }
+     }
+    }
+   programs {
+     program {
+     name: "click";
+     signal: "mouse,down,1";
+     source: "event";
+     action: STATE_SET "down" 0.0;
+     target: "bg";
+     }
+     program {
+     name: "unclick";
+     signal: "mouse,up,1";
+     source: "event";
+     action: STATE_SET "default" 0.0;
+     target: "bg";
+     }
+     program {
+     name: "send";
+     signal: "mouse,clicked,1";
+     source: "event";
+     action: SIGNAL_EMIT "e,action,click" "";
+     }
+     program {
+     name: "select";
+     signal: "e,state,selected";
+     source: "e";
+     action: STATE_SET "selected" 0.0;
+     target: "e.text.label";
+     target: "label2";
+     }
+     program {
+     name: "normal";
+     signal: "e,state,default";
+     source: "e";
+     action: STATE_SET "default" 0.0;
+     target: "e.text.label";
+     target: "label2";
+     }
       }
    }
 
@@ -40084,7 +40060,7 @@ target: "region";
                   min: 0 1;
                   text_class: "module_small";
                }
-	    }
+        }
             description { state: "visible" 0.0;
                inherit: "default" 0.0;
                color: 255 255 255 255;
