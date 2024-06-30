@@ -293,12 +293,14 @@ collections {
 }
 group {
    name: "e/desktop/background";
+   data { item: "style" "4"; }
    max: 1680 1050;
    parts {
       part {
       name: "background_image";
         description {
           state: "default" 0.0;
+          aspect: 1.600000000 1.600000000; aspect_preference: NONE;
           image {
             normal: "grill_dark_tiny_pattern.png";
           }
