@@ -279,7 +279,7 @@ color_classes {
  * parts (images, text, rects etc.))
  */
 
-data.item: "gtk-theme" "MokshaPassion-GTK";
+data.item: "gtk-theme" "MokshaRedPassion";
 data.item: "icon-theme" "MokshaRedPassion";
 collections {
 /* begin the collection of edje groups that are in this file */
