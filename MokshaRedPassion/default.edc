@@ -281,6 +281,10 @@ color_classes {
 
 data.item: "gtk-theme" "MokshaRedPassion";
 data.item: "icon-theme" "MokshaRedPassion";
+data.item: "version" "125";
+
+efl_version: 1 25;
+
 collections {
 /* begin the collection of edje groups that are in this file */
 
