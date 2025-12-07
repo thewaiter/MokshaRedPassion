@@ -25824,7 +25824,7 @@ target: "region";
                   relative: 1.0  1.0;
                   offset: -5 -5;
                }
-               color_class: "ilist_item_odd";
+               color_class: "ilist_item";
                text {
                   font: "Sans";
                   size: 10;
