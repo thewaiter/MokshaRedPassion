@@ -27762,7 +27762,7 @@ target: "region";
                   relative: 1.0 0.0;
                   offset: -7 6;
                }
-               color: 0 0 0 64;
+               color: 0 0 0 164;
                text {
                   font: "Sans:style=Bold";
                   size: 10;
